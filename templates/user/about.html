@@ -1,0 +1,53 @@
+{% extends 'user/base.html' %}
+
+{% block title %}
+    关于我们
+{% endblock %}
+{% block head %}
+<link href="{{ url_for('static',filename='css/index.css') }}" rel="stylesheet" type="text/css"
+      xmlns="http://www.w3.org/1999/html"/>
+    <link href="{{ url_for('static',filename='css/about.css') }}" rel="stylesheet" type="text/css"/>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+{% endblock %}
+{% block main %}
+    <div class="about_area container base_word">
+        <div class="about_ad_img">
+            <a href="{{ url_for('product.getClassify',cid=5) }}"><img
+                    src="{{ url_for('static',filename='img/about_ad.png') }}" width="320" height="50" alt="Nexus"
+                    title="Nexus"/></a>
+        </div>
+        <h2 class="about_title">NexusWebsite</h2>
+        <span class="about_small">定义全新的服务概念</span>
+        <p class="about_desc">
+            在Nexus上，服务即商品。</br>
+            人人皆可成为服务的发布者或需求者</br>任何技能都可包装成定制化服务，实现技能变现</br>
+            在线购买服务应和在淘宝上购买实体产品一样简单</br>同时，我们为所有自由职业者提供时间随意的远程工作平台</br></br>
+            Nexus使个人轻松地将他们的技能包装到定义明确的服务类产品中。</br>
+            Nexus通过设置价格和期限来消除谈判和延误。 </br>
+            Nexus使自由职业者可进行远程工作和赚钱。</br>
+            Nexus是中小企业制作营销和广告材料的一种经济实惠的替代方案。</br>
+            Nexus市场中提供的大多数数字服务都可以帮助买家扩大其在线形象。</br>
+            Nexus可以节省用户的时间，并且可以充当搜索引擎来寻找合格的服务提供者。
+        </p>
+        <div class="has_join">
+            {% for user in userList %}
+                <div>
+                    <img title="{{ user['username'] }}" src="{{ user['img_url'] }}">
+                </div>
+            {% endfor %}
+            <div>
+                <a href="/user/register">
+                    <img class="more" src="{{ url_for('static',filename='image/more.png') }}" title="期待你的加入"
+                         alt="NexusWebsite"/>
+                </a>
+            </div>
+        </div>
+        <h1 class="about_title">推荐</h1>
+        <div class="ad_area">
+<!--            <a href="/product/detail?id=9ccbc7628ea211eaaed5acde48001122">-->
+                <img class="more" src="{{ url_for('static',filename='image/about_ad1.png') }}" title="Nexus-Website"
+                     alt="NexusWebsite"/>
+<!--            </a>-->
+        </div>
+    </div>
+{% endblock %}
