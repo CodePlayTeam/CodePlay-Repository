@@ -23,8 +23,36 @@
                         </th>
 					</tr>
 					<tr>
-
-
+						<th>图片</th>
+						<th>服务</th>
+						<th>价格</th>
+<!--						<th>数量</th>-->
+						<th>小计</th>
+						<th>操作</th>
+					</tr>
+                    {% for orderItem in order.orderItems %}
+                        <tr>
+                        <td class="img_order">
+                            <img src="{{ orderItem.product.head_img }}"/>
+                        </td>
+                        <td>
+                            <a target="_blank" href="{{ url_for('product.detail',id=orderItem.product.id) }}">{{ orderItem.product.pname }}</a>
+                        </td>
+                        <td>
+                            ￥{{ orderItem.product.new_price }}
+                        </td>
+                        <td class="quantity">
+                            <input type="hidden" name="count" value="${orderItem.count }" maxlength="4" onpaste="return false;"/>
+                            {{ orderItem.count }}
+                        </td>
+                        <td>
+                            <span class="subtotal">￥{{ orderItem.sub_total }}</span>
+                        </td>
+                        <td>
+                            <a href="{{ url_for('product.deleteOrderItem',id=orderItem.id) }}" class="delete">删除</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
 				</tbody>
 			</table>
 				<dl id="giftItems" class="hidden" style="display: none;">
